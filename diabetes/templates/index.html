@@ -1,15 +1,18 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <link rel="stylesheet" type="text/css" href="{% static '/css/index.css' %}">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static '/css/index.css' %}"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Predict Diabetes</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- <nav class="navi">
         <ul>
             <li><img src="{% static '/image/med.png' %}" class="logo" height="40px" width="40px"> </li>
@@ -17,82 +20,71 @@
         </ul>
     </nav> -->
     <div class="outerContainer">
-
-        <div class="container">
-            <div class="text">
-                Diabetes Prediction
-
+      <div class="container">
+        <div class="text">Diabetes Prediction</div>
+        <form action="{% url 'index' %}" method="POST">
+          {% csrf_token %}
+          <div class="form-row">
+            <div class="input-data">
+              <input type="text" name="preg" required />
+              <div class="underline"></div>
+              <label for="">Pregnancies</label>
             </div>
-            <form action="{% url 'index' %}" method="POST">
-                {% csrf_token %}
-                <div class="form-row">
-                    <div class="input-data">
-                        <input type="text" name="preg" required>
-                        <div class="underline"></div>
-                        <label for="">Pregnancies</label>
-                    </div>
-                    <div class="input-data">
-                        <input type="text" name="gul" required>
-                        <div class="underline"></div>
-                        <label for="">Glucose</label>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="input-data">
-                        <input type="text" name="bp" required>
-                        <div class="underline"></div>
-                        <label for="">Blood Pressure</label>
-                    </div>
-                    <div class="input-data">
-                        <input type="text" name="st" required>
-                        <div class="underline"></div>
-                        <label for="">Skin Thickness</label>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="input-data">
-                        <input type="text" name="ins" required>
-                        <div class="underline" name=""></div>
-                        <label for="">Insulin</label>
-                    </div>
-                    <div class="input-data">
-                        <input type="text" name="bmi" required>
-                        <div class="underline"></div>
-                        <label for="">BMI</label>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="input-data">
-                        <input type="text" name="dpf" required>
-                        <div class="underline"></div>
-                        <label for="">Diabetes Pedigree Function</label>
-                    </div>
-                    <div class="input-data">
-                        <input type="text" name="age" required>
-                        <div class="underline"></div>
-                        <label for="">Age</label>
-                    </div>
-                </div>
-                <input class="submitBtn" type="submit" value="Predict">
-            </form>
-
-        </div>
-
-       
-        
+            <div class="input-data">
+              <input type="text" name="gul" required />
+              <div class="underline"></div>
+              <label for="">Glucose</label>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input-data">
+              <input type="text" name="bp" required />
+              <div class="underline"></div>
+              <label for="">Blood Pressure</label>
+            </div>
+            <div class="input-data">
+              <input type="text" name="st" required />
+              <div class="underline"></div>
+              <label for="">Skin Thickness</label>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input-data">
+              <input type="text" name="ins" required />
+              <div class="underline" name=""></div>
+              <label for="">Insulin</label>
+            </div>
+            <div class="input-data">
+              <input type="text" name="bmi" required />
+              <div class="underline"></div>
+              <label for="">BMI</label>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="input-data">
+              <input type="text" name="dpf" required />
+              <div class="underline"></div>
+              <label for="">Diabetes Pedigree Function</label>
+            </div>
+            <div class="input-data">
+              <input type="text" name="age" required />
+              <div class="underline"></div>
+              <label for="">Age</label>
+            </div>
+          </div>
+          <input class="submitBtn" type="submit" value="Predict" />
+        </form>
+      </div>
     </div>
     {% if prediction is not None %}
     <div class="prediction-result">
-        {% if prediction == 1 %}
-        <p class="positive" >The patient is Diabetes Positive</p>
-        {% elif prediction == 0 %}
-        <p class="negative">The patient is Diabetes Negative</p>
-        {% else %}
-        <p class="unknown"></p>
-        {% endif %}
-
-        {% endif %}
+      {% if prediction == 1 %}
+      <p class="positive">The patient is Diabetes Positive</p>
+      {% elif prediction == 0 %}
+      <p class="negative">The patient is Diabetes Negative</p>
+      {% else %}
+      <p class="unknown"></p>
+      {% endif %} {% endif %}
     </div>
-</body>
-
+  </body>
 </html>
