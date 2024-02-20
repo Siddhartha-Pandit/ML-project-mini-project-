@@ -180,15 +180,3 @@ form .form-row .textarea {
   font-size: 41px;
   padding: 50px;
 }
-.negative {
-  background-color: #e53e5f;
-  color: #e53e5f;
-}
-.positive {
-  background-color: #459967;
-  color: #459967;
-}
-.unknown {
-  background-color: #3e7ee5;
-  color: #3e7ee5;
-}
